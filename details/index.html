@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Abhiyan</title>
+</head>
+<body>
+<div class="formbold-main-wrapper" >
+    <div class="formbold-form-wrapper" >
+      
+      <form action="../recommendation/index.html" method="POST" id="userForm">
+        <div class="formbold-form-title">
+          <h2 class="">Abhiyan wants to know you!</h2>
+          <p>
+            Please enter your valid details below for Government Scheme Recommendations.
+          </p>
+        </div>
+  
+        <div class="formbold-input-flex">
+          <div>
+            <label for="firstname" class="formbold-form-label">
+              First name
+            </label>
+            <input type="text" name="firstname" id="firstname" class="formbold-form-input"/>
+          </div>
+          <div>
+            <label for="lastname" class="formbold-form-label"> Last name </label>
+            <input type="text" name="lastname" id="lastname" class="formbold-form-input"/>
+          </div>
+        </div>
+  
+        <div class="formbold-input-flex">
+          <div>
+            <label for="nationality" class="formbold-form-label"> Nationality </label>
+            <input type="text" name="nationality" id="nationality" class="formbold-form-input"/>
+          </div>
+          <div>
+            <label for="phone" class="formbold-form-label"> Age </label>
+            <input type="number" name="age" id="age" class="formbold-form-input"/>
+          </div>
+        </div>
+  
+        <div class="formbold-mb-3">
+          <label for="address" class="formbold-form-label">
+            City
+          </label>
+          <input
+            type="text"
+            name="city"
+            id="city"
+            class="formbold-form-input"
+          />
+        </div>
+        
+        <div class="formbold-mb-3">
+            
+            <label class="formbold-form-label">Area</label>
+            <div class="formbold-input-flex1">
+              <div>
+                <label for="urban" class="formbold-form-label">Urban</label>
+                <input type="radio" name="area" id="urban" class="formbold-form-input" />
+                
+              </div>
+              <div>
+                <label for="rural" class="formbold-form-label">Rural </label>
+                <input type="radio" name="area" id="rural" class="formbold-form-input" />
+              </div>
+            </div>
+          </div>
+           
+        <div class="formbold-input-flex">
+          <div>
+            <label for="state" class="formbold-form-label"> Income </label>
+            <input type="number" name="state" id="state" class="formbold-form-input"/>
+          </div>
+          <div>
+            <label for="country" class="formbold-form-label"> Caste </label>
+            <select name="caste" id="caste" class="formbold-form-input">
+            <option>General</option>
+            <option>OBC</option>
+            <option>SC</option>
+            <option>ST</option>
+            </select>
+          </div>
+        </div>
+        <button class="formbold-btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  <script>
+    document.getElementById('userForm').addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent default form submission
+  
+      // Assuming the logged-in user's email is stored in localStorage/sessionStorage after login
+      const userEmail = localStorage.getItem('userEmail'); 
+  
+      // if (!userEmail) {
+      //   alert('You are not logged in! Please log in first.');
+      //   location.href = '../registration/index.html'; // Redirect to login page if no user is logged in
+      //   return;
+      // }
+  
+      const formData = {
+        firstname: document.getElementById('firstname').value,
+        lastname: document.getElementById('lastname').value,
+        nationality: document.getElementById('nationality').value,
+        age: parseInt(document.getElementById('age').value),
+        city: document.getElementById('city').value,
+        area: document.querySelector('input[name="area"]:checked').id,
+        income: parseInt(document.getElementById('state').value),
+        caste: document.getElementById('caste').value,
+       // email: userEmail, // Include logged-in user's email for mapping
+      };
+  
+      try {
+        const response = await fetch('http://localhost:3000/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData),
+        });
+  
+        const result = await response.json();
+  
+        if (response.ok) {
+          alert(result.message); // Show success message
+          location.href = '../recommendation/index.html'; // Redirect on success
+        } else {
+          alert(result.error || 'An error occurred. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred. Please try again.');
+      }
+    });
+  </script>
+  
+
+  
+</body>
+</html>
