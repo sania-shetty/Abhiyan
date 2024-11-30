@@ -63,9 +63,6 @@ app.post('/signin', async (req, res) => {
 const details = require('./details'); // Import details.js
 console.log(details.getDetails());
 
-// Your server setup
-const express = require('express');
-//const app = express();
 
 app.get('/', (req, res) => {
     res.send(details.getDetails());

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 // MongoDB connection
 mongoose
-  .connect('mongodb://localhost:27017/abhiyan', { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect('mongodb://localhost:27017/abhiyan')
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
 
@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a model based on the schema
-const User = mongoose.model('User', userSchema);
+//const User = mongoose.model('User', userSchema);
 
 // Route to handle form submission
 app.post('/submit', async (req, res) => {
@@ -62,8 +62,8 @@ app.post('/submit', async (req, res) => {
 });
 
 // Start the server
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
+// const PORT = 3000;
+// app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
 module.exports = {
   getDetails: () => {
