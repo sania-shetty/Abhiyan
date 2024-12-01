@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
+const userdetails=require("./details")
 const app = express();
 const port = 3000;
 
@@ -12,10 +12,7 @@ app.use(bodyParser.json());
 
 // MongoDB Connection
 const mongoURI = 'mongodb://127.0.0.1:27017/abhiyan'; // Replace with your MongoDB URI
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+mongoose.connect(mongoURI);
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -33,6 +30,8 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 // Routes
+app.use('/',userdetails)
+
 app.post('/signup', async (req, res) => {
     const { name, email, password } = req.body;
 
@@ -60,13 +59,13 @@ app.post('/signin', async (req, res) => {
     }
 });
 
-const details = require('./details'); // Import details.js
+/* const details = require('./details'); // Import details.js
 console.log(details.getDetails());
 
 
 app.get('/', (req, res) => {
     res.send(details.getDetails());
-});
+}); */
 
 // app.listen(3000, () => {
 //     console.log('Server is running on http://localhost:3000');

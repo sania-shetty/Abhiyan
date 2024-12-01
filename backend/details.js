@@ -2,21 +2,22 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const router=express.Router()
 const cors = require('cors');
 
 // Initialize app
-const app = express();
+//const app = express();
 
 // Middleware
-app.use(cors());
-app.use(bodyParser.json());
+/* router.use(cors());
+router.use(bodyParser.json()); */ 
 
 // MongoDB connection
-mongoose
+/* mongoose
   .connect('mongodb://localhost:27017/abhiyan')
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err));
-
+ */
 // Define a schema for the form data
 const userSchema = new mongoose.Schema({
   firstname: String,
@@ -30,10 +31,10 @@ const userSchema = new mongoose.Schema({
 });
 
 // Create a model based on the schema
-//const User = mongoose.model('User', userSchema);
+const User = mongoose.model('UserDetail', userSchema);
 
 // Route to handle form submission
-app.post('/submit', async (req, res) => {
+router.post('/submit', async (req, res) => {
   try {
     // Extract data from the request body
     const { firstname, lastname, nationality, age, city, area, income, caste } = req.body;
@@ -54,6 +55,7 @@ app.post('/submit', async (req, res) => {
     await newUser.save();
 
     // Send a success response
+    //console.log("success")
     res.status(201).json({ message: 'Form submitted successfully!' });
   } catch (error) {
     console.error('Error saving form data:', error);
@@ -65,8 +67,8 @@ app.post('/submit', async (req, res) => {
 // const PORT = 3000;
 // app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
-module.exports = {
-  getDetails: () => {
-      return "Details from details.js";
-  }
-};
+
+/* app.listen(8888,()=>{
+  "server listening at port 8888"
+}) */
+module.exports =router
