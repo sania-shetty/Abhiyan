@@ -31,7 +31,7 @@ const Registration = () => {
       const data = await response.json();
 
       if (response.ok) {
-        window.location.href = 'details.js'; // Redirect on success
+        window.location.href = 'details.js?from=signup'; // Redirect on success
       } else {
         alert(data.error);
       }
@@ -53,7 +53,7 @@ const Registration = () => {
 
       if (response.ok) {
         //alert(data.message);
-        window.location.href = 'Recommend.js'; // Redirect on success
+        window.location.href = 'details.js?from=signin'; // Redirect on success
       } else {
         alert(data.error);
       }

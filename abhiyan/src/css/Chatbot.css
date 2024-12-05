@@ -1,0 +1,11 @@
+button{
+    color: #000;
+    background-color: indianred;
+}
+
+div.interface{
+    background-color: rgb(248, 231, 231);
+    color: black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 10px;
+}

@@ -6,7 +6,7 @@ import About from './pages/About';
 import Contact from './pages/Contact';
 import UserDetails from './pages/details';
 import Recommend from './pages/Recommend';
-import Chat from './pages/Chatbot';
+import AbhiyanChatbot from './pages/Chatbot';
 
 function App() {
   return (
@@ -20,7 +20,7 @@ function App() {
         <Route path="/pages/Registration.js" element={<Registration />} />
         <Route path="/pages/details.js" element={<UserDetails />} />
         <Route path="/pages/Recommend.js" element={<Recommend />} />
-        <Route path="/pages/Chatbot.js" element={<Chat />} />
+        <Route path="/pages/Chatbot.js" element={<AbhiyanChatbot />} />
       </Routes>
     </Router>
   );

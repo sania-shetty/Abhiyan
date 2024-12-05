@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
+import { useLocation } from "react-router-dom"; 
 import "../css/Det_style.css";
 
 const UserDetails = () => {
@@ -12,6 +13,24 @@ const UserDetails = () => {
     income: "",
     caste: "General",
   });
+
+  const [isSkipEnabled, setIsSkipEnabled] = useState(false);
+
+  // Get query parameters from the location
+  const location = useLocation();
+
+  useEffect(() => {
+    // Parse query parameters to determine the origin
+    const queryParams = new URLSearchParams(location.search);
+    const from = queryParams.get("from");
+
+    // Enable the skip button if the page is navigated from Sign-In
+    if (from === "signin") {
+      setIsSkipEnabled(true);
+    } else {
+      setIsSkipEnabled(false);
+    }
+  }, [location]);
 
   // Handle form field change
   const handleChange = (e) => {
@@ -53,6 +72,11 @@ const UserDetails = () => {
       console.error("Error submitting form:", error);
       alert("An error occurred. Please try again.");
     }
+  };
+
+  const handleSkip = () => {
+    // Logic for skip button action
+    window.location.href = "Recommend.js";
   };
 
   return (
@@ -197,6 +221,9 @@ const UserDetails = () => {
           </div>
           <button className="formbold-btn" type="submit">
             Submit
+          </button>
+          <button className="formbold-btn" type="button" onClick={handleSkip} disabled={!isSkipEnabled}>
+            Skip
           </button>
         </form>
       </div>

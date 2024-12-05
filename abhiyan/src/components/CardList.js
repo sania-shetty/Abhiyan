@@ -22,17 +22,22 @@ const Card = ({ title, text, link }) => {
       {
         title: "Card Title 2",
         text: "This content is a little bit longer.",
-        link: "../chatbot/index.html",
+        link: "../pages/Chatbot.js",
       },
       {
         title: "Card Title 3",
         text: "This is a longer card with supporting text below as a natural lead-in to additional content.",
-        link: "../chatbot/index.html",
+        link: "../pages/Chatbot.js",
       },
       {
         title: "Card Title 4",
         text: "This content is a little bit longer.",
-        link: "../chatbot/index.html",
+        link: "../pages/Chatbot.js",
+      },
+      {
+        title: "Card Title 5",
+        text: "This content is a little bit longer.",
+        link: "../pages/Chatbot.js",
       },
     ];
   
