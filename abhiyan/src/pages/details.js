@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { useLocation } from "react-router-dom"; 
 import "../css/Det_style.css";
 
-const UserDetails = () => {
+const UserDetails = ({toParent}) => {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
