@@ -64,7 +64,9 @@ const UserDetails = ({toParent}) => {
 
       if (response.ok) {
         alert(result.message); // Show success message
+        
         window.location.href = "Recommend.js"; // Redirect on success
+        
       } else {
         alert(result.error || "An error occurred. Please try again.");
       }
