@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import "../css/Reg_style.css";
+import { useNavigate } from 'react-router-dom';
 
-
-const Registration = () => {
+const Registration = ({toParent}) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [signUpForm, setSignUpForm] = useState({ name: '', email: '', password: '' });
   const [signInForm, setSignInForm] = useState({ email: '', password: '' });
-
+  const nav=useNavigate();
   const handleToggleMode = () => {
     setIsSignUpMode((prevMode) => !prevMode);
   };
@@ -53,7 +53,8 @@ const Registration = () => {
 
       if (response.ok) {
         //alert(data.message);
-        window.location.href = 'details.js?from=signin'; // Redirect on success
+        toParent(payload);
+        nav("/pages/Recommend.js"); // Redirect on success
       } else {
         alert(data.error);
       }

@@ -7,8 +7,13 @@ import Contact from './pages/Contact';
 import UserDetails from './pages/details';
 import Recommend from './pages/Recommend';
 import AbhiyanChatbot from './pages/Chatbot';
+import { useState } from 'react';
+
 function App() {
-  
+  const [sam,setSam]=useState("");
+  function fromChild(data){
+    setSam(data);
+  }
   return (
     <Router>
       <Routes>
@@ -18,7 +23,7 @@ function App() {
         <Route path="/pages/Home.js" element={<Home />} />
         <Route path="/pages/Contact.js" element={<Contact />} />
         <Route path="/pages/Registration.js" element={<Registration />} />
-        <Route path="/pages/details.js" element={<UserDetails/>} />
+        <Route path="/pages/details.js" element={<UserDetails toParent={fromChild}/>} />
         <Route path="/pages/Recommend.js" element={<Recommend/>} />
         <Route path="/pages/Chatbot.js" element={<AbhiyanChatbot />} />
       </Routes>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect} from "react";
 import { useLocation } from "react-router-dom"; 
 import "../css/Det_style.css";
+import { useNavigate } from "react-router-dom";
 
 const UserDetails = ({toParent}) => {
+  const nav=useNavigate();
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -64,8 +66,8 @@ const UserDetails = ({toParent}) => {
 
       if (response.ok) {
         alert(result.message); // Show success message
-        
-        window.location.href = "Recommend.js"; // Redirect on success
+        toParent(payload);
+        nav("/pages/Recommend.js"); // Redirect on success
         
       } else {
         alert(result.error || "An error occurred. Please try again.");
@@ -76,10 +78,10 @@ const UserDetails = ({toParent}) => {
     }
   };
 
-  const handleSkip = () => {
+  /* const handleSkip = () => {
     // Logic for skip button action
     window.location.href = "Recommend.js";
-  };
+  }; */
 
   return (
     <div className="formbold-main-wrapper">
@@ -224,9 +226,9 @@ const UserDetails = ({toParent}) => {
           <button className="formbold-btn" type="submit">
             Submit
           </button>
-          <button className="formbold-btn" type="button" onClick={handleSkip} disabled={!isSkipEnabled}>
+          {/* <button className="formbold-btn" type="button" onClick={handleSkip} disabled={!isSkipEnabled}>
             Skip
-          </button>
+          </button> */}
         </form>
       </div>
     </div>
