@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import "../css/Reg_style.css";
 import { useNavigate } from 'react-router-dom';
 
-const Registration = ({toParent}) => {
+const Registration = ({toRegisteration,toParent}) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [signUpForm, setSignUpForm] = useState({ name: '', email: '', password: '' });
   const [signInForm, setSignInForm] = useState({ email: '', password: '' });
@@ -31,7 +31,8 @@ const Registration = ({toParent}) => {
       const data = await response.json();
 
       if (response.ok) {
-        window.location.href = 'details.js?from=signup'; // Redirect on success
+        toRegisteration(signUpForm.email)
+        nav("/pages/details.js"); // Redirect on success
       } else {
         alert(data.error);
       }
@@ -53,7 +54,7 @@ const Registration = ({toParent}) => {
 
       if (response.ok) {
         //alert(data.message);
-        toParent(payload);
+        toParent(data);
         nav("/pages/Recommend.js"); // Redirect on success
       } else {
         alert(data.error);

@@ -1,10 +1,10 @@
-const Card = ({ title, text, link }) => {
+const Card = ({ title, schemeLink, link }) => {
     return (
       <div className="col">
         <div className="card border-red mb-3 h-100" style={{ maxWidth: "18rem" }}>
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
-            <p className="card-text">{text}</p>
+            <p><a href={schemeLink} target="_blank" className="card-text">View PDF file</a></p>
             <a href={link}>Chat to Know More</a>
           </div>
         </div>
@@ -12,31 +12,32 @@ const Card = ({ title, text, link }) => {
     );
   };
   
-  const CardList = () => {
+  const CardList = ({schemes}) => {
+    console.log(schemes["scheme1"]["scheme_name"]);
     const cardData = [
       {
-        title: "Card Title 1",
-        text: "This is a longer card with supporting text below as a natural lead-in to additional content.",
+        title: schemes["scheme1"]["scheme_name"],
+        schemeLink:schemes["scheme1"]["scheme_link"],
         link: "../pages/Chatbot.js",
       },
       {
-        title: "Card Title 2",
-        text: "This content is a little bit longer.",
+        title: schemes["scheme2"]["scheme_name"],
+        schemeLink:schemes["scheme1"]["scheme_link"],
         link: "../pages/Chatbot.js",
       },
       {
-        title: "Card Title 3",
-        text: "This is a longer card with supporting text below as a natural lead-in to additional content.",
+        title: schemes["scheme3"]["scheme_name"],
+        schemeLink:schemes["scheme1"]["scheme_link"],
         link: "../pages/Chatbot.js",
       },
       {
-        title: "Card Title 4",
-        text: "This content is a little bit longer.",
+        title: schemes["scheme4"]["scheme_name"],
+        schemeLink:schemes["scheme1"]["scheme_link"],
         link: "../pages/Chatbot.js",
       },
       {
-        title: "Card Title 5",
-        text: "This content is a little bit longer.",
+        title: schemes["scheme5"]["scheme_name"],
+        schemeLink:schemes["scheme1"]["scheme_link"],
         link: "../pages/Chatbot.js",
       },
     ];

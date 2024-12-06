@@ -10,9 +10,13 @@ import AbhiyanChatbot from './pages/Chatbot';
 import { useState } from 'react';
 
 function App() {
-  const [sam,setSam]=useState("");
+  const [userdata,setUserdata]=useState("");
+  const [email,setEmail]=useState("");
   function fromChild(data){
-    setSam(data);
+    setUserdata(data);
+  }
+  function fromDetails(data){
+    setEmail(data);
   }
   return (
     <Router>
@@ -22,9 +26,9 @@ function App() {
         <Route path="/pages/About.js" element={<About />} />
         <Route path="/pages/Home.js" element={<Home />} />
         <Route path="/pages/Contact.js" element={<Contact />} />
-        <Route path="/pages/Registration.js" element={<Registration />} />
-        <Route path="/pages/details.js" element={<UserDetails toParent={fromChild}/>} />
-        <Route path="/pages/Recommend.js" element={<Recommend/>} />
+        <Route path="/pages/Registration.js" element={<Registration toRegisteration={fromDetails} toParent={fromChild}/>} />
+        <Route path="/pages/details.js" element={<UserDetails toParent={fromChild} email={email}/>} />
+        <Route path="/pages/Recommend.js" element={<Recommend userData={userdata}/>} />
         <Route path="/pages/Chatbot.js" element={<AbhiyanChatbot />} />
       </Routes>
     </Router>

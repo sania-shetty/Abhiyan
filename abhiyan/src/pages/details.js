@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import "../css/Det_style.css";
 import { useNavigate } from "react-router-dom";
 
-const UserDetails = ({toParent}) => {
+const UserDetails = ({toParent,email}) => {
   const nav=useNavigate();
   const [formData, setFormData] = useState({
     firstname: "",
@@ -14,6 +14,7 @@ const UserDetails = ({toParent}) => {
     beneficiaries: "healthcare",
     income: "",
     caste: "General",
+    email:""
   });
 
   const [isSkipEnabled, setIsSkipEnabled] = useState(false);
@@ -53,6 +54,7 @@ const UserDetails = ({toParent}) => {
       ...formData,
       age: parseInt(formData.age, 10),
       income: parseInt(formData.income, 10),
+      email:email
       // email: userEmail, // Include logged-in user's email for mapping
     };
     try {
@@ -85,6 +87,7 @@ const UserDetails = ({toParent}) => {
 
   return (
     <div className="formbold-main-wrapper">
+      
       <div className="formbold-form-wrapper">
         <form onSubmit={handleSubmit}>
           <div className="formbold-form-title">

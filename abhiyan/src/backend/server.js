@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const userdetails = require('./details'); // Import additional routes
+const {router,detailsSchema} = require('./details'); // Import additional routes
 
 const app = express();
 const port = 3000;
@@ -29,9 +29,9 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
-
+const Userdetail=mongoose.model("Userdetail",detailsSchema);
 // Routes
-app.use('/', userdetails); // Mount the `details.js` router
+app.use('/', router); // Mount the `details.js` router
 
 // Endpoint for user signup
 app.post('/signup', async (req, res) => {
@@ -49,11 +49,11 @@ app.post('/signup', async (req, res) => {
 // Endpoint for user signin
 app.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-
     try {
-        const user = await User.findOne({ email, password });
+        const user = await User.findOne({ email:email, password:password });
         if (user) {
-            res.status(200).send({ message: 'Sign-in successful', user });
+            const details= await Userdetail.findOne({email});
+            res.status(200).send({ message: 'Sign-in successful', details })
         } else {
             res.status(400).send({ error: 'Invalid email or password' });
         }
