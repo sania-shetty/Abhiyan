@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
 import CardList from "../components/CardList";
 
-function Recommend(){
+function Recommend(props){
   return (
     <div className="hero_area">
       <Navbar />

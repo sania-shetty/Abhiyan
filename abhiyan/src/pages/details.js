@@ -2,7 +2,7 @@ import React, { useState, useEffect} from "react";
 import { useLocation } from "react-router-dom"; 
 import "../css/Det_style.css";
 
-const UserDetails = () => {
+const UserDetails = ({toParent}) => {
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -64,7 +64,9 @@ const UserDetails = () => {
 
       if (response.ok) {
         alert(result.message); // Show success message
+        
         window.location.href = "Recommend.js"; // Redirect on success
+        
       } else {
         alert(result.error || "An error occurred. Please try again.");
       }
