@@ -8,7 +8,9 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 function Recommend({userData}){
-  const [apiData,setApidata]=useState([]);
+  const [apiData,setApidata]=useState(null);
+  const [isLoading,setIsloading]=useState(true);
+  //const [data,setData]=useState(null);
   useEffect(()=>{
     fetch("https://jwie2c4inb.execute-api.ap-south-1.amazonaws.com/dev2/getSchemes",{
       "method":"POST",
@@ -22,23 +24,29 @@ function Recommend({userData}){
       })
     }).then(response=>{
       if(response) return response.json()
-        else console.log("error response from api"); 
     }).then(data=>{
-      if(data) setApidata(data);
-        //console.log(apiData);
-        //console.log(data);
-        //console.log(apiData)
+      if(data) {
+        setApidata(data);
+        setIsloading(false);
+      }
     }).catch(err=>{
       console.log(err);
+      setIsloading(false);
     })
-  },[apiData])
+  },[])
+/*   useEffect(() => {
+    console.log("apiData updated:", apiData); // Observe changes to apiData
+}, [apiData]); */
   return (
     <div className="hero_area">
-      {/* <h1>{userData.email}</h1> */}
       <Navbar />
       <Slider />
       <br/>
-      <CardList schemes={apiData}/>
+      {isLoading ? "..Loading":(
+        <CardList schemes={apiData}/>
+      )}
+      
+      
     </div>
   );
 };
