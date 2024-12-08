@@ -4,9 +4,8 @@
       padding: 0;
       box-sizing: border-box;
     }
-    body {
-      font-family: 'Inter', sans-serif;
-    }
+
+    
     .formbold-mb-3 {
       margin-bottom: 15px;
     }
@@ -28,14 +27,14 @@
       align-items: center;
       justify-content: center;
       padding: 48px;
-      background-color: wheat;
+      background-color: #070707;
     }
   
     .formbold-form-wrapper {
       margin: 0 auto;
       max-width: 570px;
       width: 100%;
-      background: white;
+      background: whitesmoke;
       border: 2px solid rgb(77, 76, 76);
       padding: 40px;
       border-width: 1rem;

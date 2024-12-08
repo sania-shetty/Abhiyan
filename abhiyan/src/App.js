@@ -7,6 +7,7 @@ import Contact from './pages/Contact';
 import UserDetails from './pages/details';
 import Recommend from './pages/Recommend';
 import AbhiyanChatbot from './pages/Chatbot';
+import "./css/style.css";
 
 function App() {
   return (

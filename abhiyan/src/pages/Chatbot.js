@@ -1,73 +1,3 @@
-// import React, { useState } from 'react';
-// import axios from 'axios';
-// 
-
-// function Chat() {
-//     const [messages, setMessages] = useState([
-//         { role: 'assistant', content: 'Hello! How can I assist you today?' },
-//     ]);
-//     const [input, setInput] = useState('');
-   
-
-//     const updateVectors = async () => {
-//         try {
-//             // Perform the API call without passing a React event object
-//             const response = await axios.post('http://localhost:9200/update-vectors');
-//             console.log('Success:', response.data.message);
-//         } catch (error) {
-//             console.error('Error:', error.response?.data || error.message);
-//         }
-//     };
-    
-    
-//     const sendMessage = async () => {
-//         const newMessages = [...messages, { role: 'user', content: input }];
-//         setMessages(newMessages);
-
-//         try {
-//             const response = await axios.post('http://localhost:9200/query', { query: input });
-//             const assistantMessage = {
-//                 role: 'assistant',
-//                 content: response.data.response,
-//             };
-//             setMessages([...newMessages, assistantMessage]);
-//         } catch (err) {
-//             console.error(err);
-//             const errorMessage = {
-//                 role: 'assistant',
-//                 content: 'There was an error processing your request.',
-//             };
-//             setMessages([...newMessages, errorMessage]);
-//         }
-
-//         setInput('');
-//     };
-
-//     return (
-//         <div style={{ padding: '20px' }}>
-//             <h1>Abhiyan Chatbot 💬</h1>
-//             <div style={{ height: '60vh', overflowY: 'auto', marginBottom: '20px' }}>
-//                 {messages.map((msg, idx) => (
-//                     <div key={idx} style={{ margin: '10px 0' }}>
-//                         <b>{msg.role === 'user' ? '🧑 You:' : '💬 Assistant:'}</b> {msg.content}
-//                     </div>
-//                 ))}
-//             </div>
-//             <input
-//                 type="text"
-//                 value={input}
-//                 onChange={(e) => setInput(e.target.value)}
-//                 placeholder="Type your query..."
-//                 style={{ width: '80%', marginRight: '10px' }}
-//             /><br/>
-//             <button onClick={sendMessage}>Send</button><br/>
-//             <button onClick={updateVectors}>Update Vectors</button>;
-//         </div>
-//     )
-// }
-
-// export default Chat;
-
 import "../css/Chatbot.css";
 import React, { useState } from 'react';
 import { updateVectors, getChatResponse } from '../services/api';
@@ -110,31 +40,91 @@ const AbhiyanChatbot = () => {
   };
 
   return (
-    <div className="interface" style={{ padding: '50px' }}>
-      <h1>Abhiyan Chatbot</h1>
-
-      <div style={{ height: '50vh', overflowY: 'auto', marginBottom: '20px' }}>
-        {messages.map((msg, index) => (
-          <div style={{ margin: '10px 0' }} key={index} className={msg.role === 'assistant' ? 'assistant' : 'user'}>
-            <strong>{msg.role === 'assistant' ? 'Assistant:' : 'You:'}</strong> {msg.content}
+    <div className="interface">
+    <div style={{ padding: '50px', width: '600px', margin: '0 auto', border: '1px solid #ccc', borderRadius: '10px', backgroundColor: 'whitesmoke' }}>
+    <h1 style={{ textAlign: 'center', color:"black" }}>Abhiyan Chatbot</h1>
+  
+    <div style={{ height: '50vh', overflowY: 'auto', marginBottom: '20px', padding: '10px', border: '1px solid #ddd', borderRadius: '5px', backgroundColor: 'white' }}>
+      {messages.map((msg, index) => (
+        <div
+          key={index}
+          style={{
+            display: 'flex',
+            flexDirection: msg.role === 'assistant' ? 'row' : 'row-reverse',
+            alignItems: 'center',
+            margin: '10px 0',
+          }}
+        >
+          <img
+            src={msg.role === 'assistant' ? '/images/bot.jpg' : '/images/avatar.jpg'}
+            alt={msg.role}
+            style={{
+              width: '40px',
+              height: '40px',
+              borderRadius: '50%',
+              margin: msg.role === 'assistant' ? '0 10px 0 0' : '0 0 0 10px',
+            }}
+          />
+          <div
+            style={{
+              maxWidth: '70%',
+              padding: '10px',
+              borderRadius: '10px',
+              backgroundColor: msg.role === 'assistant' ? 'rgb(72, 133, 161)' : 'rgb(91, 210, 172)',
+              textAlign: 'left',
+            }}
+          >
+            {msg.content}
           </div>
-        ))}
-      </div>
-
-      <input
-        type="text"
-        value={userInput}
-        onChange={(e) => setUserInput(e.target.value)}
-        placeholder="Type your query here..."
-        style={{ width: '80%', marginRight: '10px' }}
-      /><br/>
-      <button onClick={handleSendMessage} disabled={loading}>
-        {loading ? 'Sending...' : 'Send'}
-      </button><br/>
-      <button onClick={handleUpdateVectors} disabled={loading}>
-        {loading ? 'Updating...' : 'Update Vectors'}
-      </button>
+        </div>
+      ))}
     </div>
+  
+    <input
+      type="text"
+      value={userInput}
+      onChange={(e) => setUserInput(e.target.value)}
+      placeholder="Type your query here..."
+      style={{
+        width: 'calc(100% - 20px)',
+        padding: '10px',
+        marginBottom: '10px',
+        borderRadius: '5px',
+        border: '1px solid #ddd'
+      }}
+    /><br/>
+    <button
+      onClick={handleSendMessage}
+      disabled={loading}
+      style={{
+        width: 'calc(50% - 5px)',
+        padding: '10px',
+        backgroundColor: '#2196f3',
+        color: '#ffffff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+      }}
+    >
+      {loading ? 'Sending...' : 'Send'}
+    </button><br/>
+    <button
+      onClick={handleUpdateVectors}
+      disabled={loading}
+      style={{
+        width: 'calc(50% - 5px)',
+        padding: '10px',
+        backgroundColor: '#4caf50',
+        color: '#ffffff',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+      }}
+    >
+      {loading ? 'Updating...' : 'Update Vectors'}
+    </button>
+  </div>
+  </div>
   );
 };
 

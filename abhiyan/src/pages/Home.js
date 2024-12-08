@@ -15,12 +15,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 function Home() {
   return (
-    <div className="App">
+    <div className="App" style={{backgroundColor:"wheat"}}>
       <Navbar />
       <SliderIndex />
       <ServiceSection />
       <AboutSection />
       <ClientSection />
+      <br/><br/>
       <ContactSection />
       <Footer />
     </div>

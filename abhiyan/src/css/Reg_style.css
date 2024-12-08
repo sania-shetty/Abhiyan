@@ -5,11 +5,10 @@
     margin: 0;
     padding: 0;
 }
-
-body {
-    font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    background: wheat;
+body{
+    background-color: #070707;
 }
+
 
 input,
 button {
@@ -32,7 +31,7 @@ button {
     width: 900px;
     height: 550px;
     margin: 0 auto 100px;
-    background: #fff;
+    background: whitesmoke;
     box-shadow: -10px -10px 15px rgba(66, 65, 65, 0.3), 10px 10px 15px rgba(70, 70, 70, 0.15), inset -10px -10px 15px rgba(255, 255, 255, 0.3), inset 10px 10px 15px rgba(70, 70, 70, 0.15);
 }
 
@@ -55,7 +54,7 @@ button {
     width: 900px;
     height: 100%;
     padding-left: 260px;
-    background: #fff;
+    background: whitesmoke;
     -webkit-transition: -webkit-transform 1.2s ease-in-out;
     transition: -webkit-transform 1.2s ease-in-out;
     transition: transform 1.2s ease-in-out;

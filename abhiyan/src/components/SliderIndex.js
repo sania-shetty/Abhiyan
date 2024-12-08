@@ -1,13 +1,13 @@
 import React from "react";
 import "../css/bootstrap.css";
+import '../css/style.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
-
 
 function SliderIndex() {
   return (
     <section className="slider_section">
-      <div id="customCarousel1" className="carousel slide" data-ride="carousel">
+      <div id="customCarousel1" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-inner">
           <div className="carousel-item active">
             <div className="container">
@@ -25,15 +25,46 @@ function SliderIndex() {
             </div>
           </div>
           {/* Add other carousel items here */}
+          <div className="carousel-item">
+            <div className="container">
+            <div className="row">
+                <div className="col-md-10 mx-auto">
+                  <div className="detail-box"><br/>
+                  <h2>Your Information Assistant</h2>
+                    <div className="btn-box">
+                      <a href="../pages/Registration.js" className="btn1">SignIn</a>
+                      <a href="../pages/Registration.js" className="btn2">LogIn</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="carousel-item">
+            <div className="container">
+            <div className="row">
+                <div className="col-md-10 mx-auto">
+                  <div className="detail-box"><br/>
+                  <h2>We recommend, You Choose</h2>
+                    <div className="btn-box">
+                      <a href="../pages/Registration.js" className="btn1">SignIn</a>
+                      <a href="../pages/Registration.js" className="btn2">LogIn</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
         <ol className="carousel-indicators">
-          <li data-target="#customCarousel1" data-slide-to="0" className="active"></li>
-          <li data-target="#customCarousel1" data-slide-to="1"></li>
-          <li data-target="#customCarousel1" data-slide-to="2"></li>
+          <li data-bs-target="#customCarousel1" data-bs-slide-to="0" className="active"></li>
+          <li data-bs-target="#customCarousel1" data-bs-slide-to="1"></li>
+          <li data-bs-target="#customCarousel1" data-bs-slide-to="2"></li>
         </ol>
       </div>
     </section>
   );
 }
+
 
 export default SliderIndex;

@@ -64,6 +64,7 @@ const Registration = () => {
   };
 
   return (
+
     <div className={`cont ${isSignUpMode ? 's--signup' : ''}`}>
       <div className="form sign-in">
         <h2>Welcome</h2>
@@ -138,6 +139,7 @@ const Registration = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

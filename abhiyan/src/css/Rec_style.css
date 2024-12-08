@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 30%;
     gap: 1px;
 }
 .col .card{
     border: 2px solid black;
-    gap: 5px;
+    gap: 3px;
     padding: 5px;
 }

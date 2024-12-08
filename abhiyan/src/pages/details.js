@@ -80,6 +80,7 @@ const UserDetails = () => {
   };
 
   return (
+    <body>
     <div className="formbold-main-wrapper">
       <div className="formbold-form-wrapper">
         <form onSubmit={handleSubmit}>
@@ -228,6 +229,7 @@ const UserDetails = () => {
         </form>
       </div>
     </div>
+    </body>
   );
 };
 

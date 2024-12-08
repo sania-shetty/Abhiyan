@@ -277,8 +277,9 @@ a:focus {
 }
 .slider_section .detail-box h2 {
   font-weight: bold;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
   color: #ffffff;
+  text-align: left;
 }
 
 .slider_section .detail-box p {

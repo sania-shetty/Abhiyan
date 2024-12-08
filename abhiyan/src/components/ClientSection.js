@@ -2,6 +2,9 @@ import React from "react";
 import "../css/bootstrap.css";
 import "../css/font-awesome.min.css";
 import "../css/style.css";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const ClientSection = () => {
   return (
@@ -19,7 +22,7 @@ const ClientSection = () => {
                 <div className="col-md-10 mx-auto">
                   <div className="box">
                     <div className="img-box">
-                      <img src="images/client.webp" alt="Step 1" />
+                      <img src="../images/client.webp" alt="Step 1" />
                     </div>
                     <div className="detail-box">
                       <div className="client_info">
@@ -48,7 +51,7 @@ const ClientSection = () => {
                 <div className="col-md-10 mx-auto">
                   <div className="box">
                     <div className="img-box">
-                      <img src="images/client.webp" alt="Step 2" />
+                      <img src="../images/client.webp" alt="Step 2" />
                     </div>
                     <div className="detail-box">
                       <div className="client_info">
@@ -79,7 +82,7 @@ const ClientSection = () => {
                 <div className="col-md-10 mx-auto">
                   <div className="box">
                     <div className="img-box">
-                      <img src="images/client.webp" alt="Step 3" />
+                      <img src="../images/client.webp" alt="Step 3" />
                     </div>
                     <div className="detail-box">
                       <div className="client_info">
@@ -104,9 +107,9 @@ const ClientSection = () => {
           </div>
         </div>
         <ol className="carousel-indicators">
-          <li data-target="#customCarousel2" data-slide-to="0" className="active"></li>
-          <li data-target="#customCarousel2" data-slide-to="1"></li>
-          <li data-target="#customCarousel2" data-slide-to="2"></li>
+          <li data-bs-target="#customCarousel2" data-bs-slide-to="0" className="active"></li>
+          <li data-bs-target="#customCarousel2" data-bs-slide-to="1"></li>
+          <li data-bs-target="#customCarousel2" data-bs-slide-to="2"></li>
         </ol>
       </div>
     </section>

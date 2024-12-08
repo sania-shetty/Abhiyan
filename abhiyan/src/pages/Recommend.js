@@ -3,7 +3,7 @@ import "../css/responsive.css";
 import "../css/Rec_style.css"; 
 import Navbar from "../components/Navbar";
 import Slider from "../components/Slider";
-import CardList from "../components/CardList"
+import CardList from "../components/CardList";
 
 function Recommend(){
   return (

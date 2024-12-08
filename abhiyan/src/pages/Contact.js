@@ -13,6 +13,7 @@ function Contact() {
     <div className="App">
       <Navbar />
       <Slider />
+      <br/><br/>
       <ContactSection />
       <Footer />
     </div>
