@@ -19,8 +19,8 @@ function Recommend({userData}){
       },
       "body":JSON.stringify({
         id:1,
-        state:userData.details["state"],
-        describe:userData.details["beneficiaries"]
+        state:userData["state"],
+        describe:userData["beneficiaries"]
       })
     }).then(response=>{
       if(response) return response.json()

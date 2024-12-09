@@ -54,7 +54,7 @@ const Registration = ({toRegisteration,toParent}) => {
 
       if (response.ok) {
         //alert(data.message);
-        toParent(data);
+        toParent(data.details);
         nav("/pages/Recommend.js"); // Redirect on success
       } else {
         alert(data.error);
