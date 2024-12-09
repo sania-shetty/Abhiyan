@@ -88,7 +88,7 @@ const UserDetails = ({toParent,email}) => {
   return (
     <body>
     <div className="formbold-main-wrapper">
-      
+      <h1>{email}</h1>
       <div className="formbold-form-wrapper">
         <form onSubmit={handleSubmit}>
           <div className="formbold-form-title">
