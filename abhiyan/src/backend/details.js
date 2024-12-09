@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const router = express.Router();
 
 // User Detail Schema
-const userSchema = new mongoose.Schema({
+const detailsSchema = new mongoose.Schema({
     firstname: String,
     lastname: String,
     nationality: String,
@@ -13,16 +13,17 @@ const userSchema = new mongoose.Schema({
     beneficiaries: String,
     income: Number,
     caste: String,
+    email: String
 },
 { strict: false}
 );
 
-const User = mongoose.model('UserDetail', userSchema);
+const User = mongoose.model('UserDetail', detailsSchema);
 
 // Endpoint to handle form submissions
 router.post('/submit', async (req, res) => {
     try {
-        const { firstname, lastname, nationality, age,state, beneficiaries, income, caste } = req.body;
+        const { firstname, lastname, nationality, age,state, beneficiaries, income, caste, email } = req.body;
 
         const newUser = new User({
             firstname,
@@ -33,6 +34,7 @@ router.post('/submit', async (req, res) => {
             beneficiaries,
             income,
             caste,
+            email
         });
 
         await newUser.save();
@@ -43,4 +45,4 @@ router.post('/submit', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = {router,detailsSchema};

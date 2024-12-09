@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import "../css/Reg_style.css";
+import { useNavigate } from 'react-router-dom';
 
-
-const Registration = () => {
+const Registration = ({toRegisteration,toParent}) => {
   const [isSignUpMode, setIsSignUpMode] = useState(false);
   const [signUpForm, setSignUpForm] = useState({ name: '', email: '', password: '' });
   const [signInForm, setSignInForm] = useState({ email: '', password: '' });
-
+  const nav=useNavigate();
   const handleToggleMode = () => {
     setIsSignUpMode((prevMode) => !prevMode);
   };
@@ -31,7 +31,8 @@ const Registration = () => {
       const data = await response.json();
 
       if (response.ok) {
-        window.location.href = 'details.js?from=signup'; // Redirect on success
+        toRegisteration(signUpForm.email)
+        nav("/pages/details.js"); // Redirect on success
       } else {
         alert(data.error);
       }
@@ -53,7 +54,8 @@ const Registration = () => {
 
       if (response.ok) {
         //alert(data.message);
-        window.location.href = 'details.js?from=signin'; // Redirect on success
+        toParent(data);
+        nav("/pages/Recommend.js"); // Redirect on success
       } else {
         alert(data.error);
       }
