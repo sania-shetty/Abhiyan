@@ -34,7 +34,6 @@ function Recommend({userData}){
       setIsloading(false);
     })
   },[])
-  console.log(userData.firstname);
 /*   useEffect(() => {
     console.log("apiData updated:", apiData); // Observe changes to apiData
 }, [apiData]); */
